@@ -26,6 +26,10 @@ const Todo = () => {
     // console.log(Store.getState());
   };
 
+  const handleDelete = (todo) => {
+    Store.dispatch({ type: "todo/delTodo", payload: todo });
+  };
+
   return (
     <div>
       <h1>Redux Todo List</h1>
@@ -40,7 +44,21 @@ const Todo = () => {
           {todos.map((todo, idx) => {
             return (
               <div key={todo}>
-                <p>{todo}</p>
+                <span>{todo}</span>
+                <button
+                  onClick={() => {
+                    handleDelete(todo);
+                  }}
+                >
+                  Complete
+                </button>
+                <button
+                  onClick={() => {
+                    handleDelete(todo);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
             );
           })}
